@@ -29,13 +29,16 @@ export const Logs = ({ stockPricing, setPause, pause }) => {
         }}
       >
         <Scrollbars>
-          {stockPricing?.map(({ data, date }) => (
+          {stockPricing?.slice(0).reverse().map(({ data, date }) => (
             <div style={{ margin: 20 }}>
-              <p>{date}</p>
+              <span>
+                Updates for {date} <br />
+              </span>
               {data?.map(({ code, price }) => (
-                <p>
+                <span>
                   {code}: ${price}
-                </p>
+                  <br />
+                </span>
               ))}
             </div>
           ))}

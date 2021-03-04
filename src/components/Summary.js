@@ -8,7 +8,7 @@ export const Summary = ({ headers, listStocks }) => {
           border: "3px solid black",
           flexGrow: 1,
           height: "60%",
-          minHeight: "50vh",
+          minHeight: "55vh",
         }}
       >
         <table className="table">

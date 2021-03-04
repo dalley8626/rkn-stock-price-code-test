@@ -5,7 +5,7 @@ import { Summary } from "./components/Summary";
 import React, { useEffect, useState } from "react";
 
 function App() {
-  const [stockPricing, setStockPricing] = useState();
+  const [stockPricing, setStockPricing] = useState([]);
   const [listStocks, setListStocks] = useState([]);
   const [pause, setPause] = useState(false);
   const [today, setDate] = useState(new Date());
@@ -22,10 +22,7 @@ function App() {
             .then((res) => res.json())
             .then((data) => data);
 
-          setStockPricing([
-            ...(stockPricing || []),
-            { data, date: currentTime },
-          ]);
+          setStockPricing([...stockPricing, { data, date: currentTime }]);
 
           listStocks?.length < 1 && setListStocks(data);
         };
@@ -39,20 +36,19 @@ function App() {
     };
   });
 
-  // REFACTOR
   useEffect(() => {
     setListStocks((prev) =>
       prev.map((prevStock) => {
-        let newStock;
+        let newStockPricing;
 
-        stockPricing?.map((val) =>
-          val.data.map((current) => {
+        stockPricing?.forEach(({ data }) =>
+          data.forEach((current) => {
             if (current.code === prevStock.code) {
               const currentPrice = current?.price;
               const lowestPrice = prevStock?.lowestPrice;
               const highestPrice = prevStock?.highestPrice;
 
-              newStock = {
+              newStockPricing = {
                 ...prevStock,
                 currentPrice: currentPrice,
                 lowestPrice: lowestPrice
@@ -70,7 +66,7 @@ function App() {
           })
         );
 
-        return newStock;
+        return newStockPricing;
       })
     );
   }, [stockPricing]);
