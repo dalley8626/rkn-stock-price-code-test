@@ -82,6 +82,7 @@ function App() {
         textAlign: "left",
         margin: 30,
         flexWrap: "wrap",
+        justifyContent: "space-between",
       }}
     >
       <Logs stockPricing={stockPricing} setPause={setPause} pause={pause} />

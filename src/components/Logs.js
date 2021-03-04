@@ -1,32 +1,31 @@
 import React from "react";
 import Scrollbars from "react-custom-scrollbars";
+import Button from "react-bootstrap/Button";
 
 export const Logs = ({ stockPricing, setPause, pause }) => {
   return (
-    <div style={{ flexGrow: 1, marginRight: 40 }}>
+    <div style={{ flexGrow: 1, margin: 15 }}>
       <div
         style={{
           display: "flex",
           justifyContent: "space-between",
-          marginBottom: 10,
         }}
       >
-        <p>Logs</p>
-        <button
-          style={{ width: 150 }}
+        <h1>Logs</h1>
+        <Button
+          style={{ width: 150, height: 50 }}
           onClick={() => setPause(!pause)}
-          className="btn btn-primary"
         >
           {pause ? "Unpause Log" : "Pause Log"}
-        </button>
+        </Button>
       </div>
 
       <div
         style={{
           border: "3px solid black",
           flexGrow: 1,
-          height: "80%",
-          minHeight: "80vh",
+          height: "85%",
+          minHeight: "85vh",
         }}
       >
         <Scrollbars>

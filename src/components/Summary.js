@@ -1,7 +1,8 @@
 export const Summary = ({ headers, listStocks }) => {
   return (
-    <div style={{ flexGrow: 2 }}>
-      <p style={{ marginBottom: 25 }}>Summary</p>
+    <div style={{ flexGrow: 2, margin: 15 }}>
+      <h1>Summary</h1>
+
       <div
         style={{
           border: "3px solid black",
@@ -22,11 +23,11 @@ export const Summary = ({ headers, listStocks }) => {
             {listStocks?.map(
               ({ price, code, currentPrice, lowestPrice, highestPrice }) => (
                 <tr>
-                  <th>{code}</th>
-                  <th>{price}</th>
-                  <th>{lowestPrice}</th>
-                  <th>{highestPrice}</th>
-                  <th>{currentPrice}</th>
+                  <td>{code}</td>
+                  <td>{price}</td>
+                  <td>{lowestPrice}</td>
+                  <td>{highestPrice}</td>
+                  <td>{currentPrice}</td>
                 </tr>
               )
             )}
